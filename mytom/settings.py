@@ -17,7 +17,8 @@ import django_heroku
 
 try:
     # from mytom.local_settings import MY_SECRET_KEY, LCO_API_KEY
-    from mytom.local_settings import * # noqa
+    # from mytom.local_settings import * # noqa
+    from mytom import local_settings
 except ImportError:
     pass
 
@@ -30,6 +31,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = MY_SECRET_KEY
+SECRET_KEY = os.getenv('MY_SECRET_KEY',local_settings.MY_SECRET_KEY)
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -194,7 +197,7 @@ TARGET_TYPE = 'SIDEREAL'
 FACILITIES = {
     'LCO': {
         'portal_url': 'https://observe.lco.global',
-        'api_key': LCO_API_KEY,
+        'api_key': os.getenv('LCO_API_KEY',''),
     },
     'GEM': {
         'portal_url': {
