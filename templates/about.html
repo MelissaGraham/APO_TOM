@@ -1,0 +1,22 @@
+{% extends 'tom_common/base.html' %}
+{% block content %}
+<p>
+Contact: MLG3K at UW dot EDU. <br/>
+This is just a test page for information. <br/>
+<!-- <strong>Nicolaus Copernicus</strong> -->
+</p>
+<ul>
+List Targets. <br/>
+  {% for target in targets %}
+  <li>{{ target.name }}</li>
+<!--   <li><a href="../targets/"> {{ target.id }} </a></li> -->
+  {% endfor %}
+</ul>
+<ul>
+List Observations. <br/>
+  {% for observation in observations %}
+  <li>{{observation.target}} -- {{observation.id}}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
