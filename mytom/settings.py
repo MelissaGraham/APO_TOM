@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import tempfile
+import django_heroku
 
 try:
     # from mytom.local_settings import MY_SECRET_KEY, LCO_API_KEY
@@ -268,3 +269,4 @@ THUMBNAIL_DEFAULT_SIZE = (200, 200)
 HINTS_ENABLED = True
 HINT_LEVEL = 20
 
+django_heroku.settings(locals())
